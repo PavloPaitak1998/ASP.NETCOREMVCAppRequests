@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "Info";
+}
+
+<h2>Here is requests. Hit a button to retrieve a spacific data.</h2>
+
+<div class="requests">
+    <form asp-action="GetCommentsCount" asp-controller="DataRequest" asp-antiforgery="true">
+        <p>
+            Get count of user comments
+        </p>
+        <div>
+            <label>UserId</label>
+            <input type="text" name="id" />
+        </div>
+        <div>
+            <input type="submit" value="Retrieve" class="btn btn-default"/>
+        </div>
+    </form>
+        <p>
+            Get user comments where comment body < 50
+        </p>
+        <a asp-controller="DataRequest" asp-action="" class="btn btn-default">Retrieve</a>
+
+        <p>
+            Get list (id, name) from list todos which is complete for user
+        </p>
+        <a asp-controller="DataRequest" asp-action="" class="btn btn-default">Retrieve</a>
+
+        <p>
+            Get list of users alphabetically (ascending) with sorted todo items by length name (descending)
+        </p>
+        <a asp-controller="DataRequest" asp-action="" class="btn btn-default">Retrieve</a>
+
+        <p>
+            Get the following structure
+            User<br />
+            Last post by user(by date)<br />
+            Number of comments under the last post<br />
+            Number of unloaded todo for the user<br />
+            The most popular user post(where there are most comments with a<br />
+            text length of more than 80 characters)<br />
+            The most popular user post(where most of all are keynotes<br />
+        </p>
+        <a asp-controller="DataRequest" asp-action="" class="btn btn-default">Retrieve</a>
+
+        <p>
+            Get the following structure <br />
+            Post<br />
+            The longest post comment<br />
+            The likest post comment<br />
+            The number of comments under the post where or 0 words or the<br />
+            length of the text is < 80
+        </p>
+        <a asp-controller="DataRequest" asp-action="" class="btn btn-default">Retrieve</a>
+
+        <p>
+            Get All Data
+        </p>
+        <a asp-controller="DataRequest" asp-action="GetAllData" class="btn btn-default">Retrieve</a>
+    
+</div>

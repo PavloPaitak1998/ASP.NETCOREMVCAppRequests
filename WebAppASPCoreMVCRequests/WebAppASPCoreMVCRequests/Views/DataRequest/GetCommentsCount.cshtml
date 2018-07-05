@@ -1,0 +1,36 @@
+﻿@model IEnumerable<(WebAppASPCoreMVCRequests.Models.Post Posts,int Count)>
+@{
+    ViewData["Title"] = "GetCommentsCount";
+}
+
+<h2>Count of user comments</h2>
+
+<div class="data">
+    <div class="container data">
+        <table class="table table-bordered text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="">ID</th>
+                    <th class="">Title </th>
+                    <th class="">Body </th>
+                    <th class="">UserId </th>
+                    <th class="">Likes  At</th>
+                    <th class="">CreatedAt </th>
+                    <th class="">Comments </th>
+                </tr>
+            </thead>
+            @foreach (var t in Model)
+             {
+                <tr>
+                    <td>@t.Posts.Id</td>
+                    <td>@t.Posts.Title</td>
+                    <td>@t.Posts.Body</td>
+                    <td>@t.Posts.UserId </td>
+                    <td>@t.Posts.Likes</td>
+                    <td>@t.Posts.CreatedAt</td>
+                    <td>@t.Count</td>
+                </tr>
+             }
+        </table>
+    </div>
+</div>
