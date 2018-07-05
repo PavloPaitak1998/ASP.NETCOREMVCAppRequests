@@ -12,10 +12,5 @@ namespace WebAppASPCoreMVCRequests.Models
 
         public List<Post> Posts { get; set; }
         public List<Todo> Todos { get; set; }
-
-        public override string ToString()
-        {
-            return $"Id: {Id}; Name:{Name}; Avatar:{Avatar}; Email:{Email}; CreatedAt:{CreatedAt}";
-        }
     }
 }
