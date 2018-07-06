@@ -12,11 +12,15 @@
         <div class="post">
             <div class="head_post">
                 <div class="avatar">
-                    <img class="avatar" src="@CopyModel.User.Avatar" alt="Alternate Text" />
+                    <a asp-controller="DataRequest" asp-action="UserInfo" asp-route-id="@CopyModel.User.Id">
+                        <img class="avatar" src="@CopyModel.User.Avatar" alt="Alternate Text" />
+                    </a>
                 </div>
                 <div class="my_title">
                     @CopyModel.Post.Title <br />
-                    <span class="name">@CopyModel.User.Name</span>
+                    <a asp-controller="DataRequest" asp-action="UserInfo" asp-route-id="@CopyModel.User.Id">
+                        @CopyModel.User.Name
+                    </a>
                 </div>
             </div>
             <div class="body_post">

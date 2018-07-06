@@ -13,7 +13,7 @@
         <table class="table table-bordered text-center">
             <thead class="thead-dark">
                 <tr>
-                    <th class="">ID</th>
+                    <th class="">Todo ID</th>
                     <th class="">Name</th>
                 </tr>
             </thead>
@@ -21,7 +21,11 @@
             {
                 <tr>
                     <td>@t.id </td>
-                    <td>@t.name </td>
+                    <td>
+                        <a asp-controller="DataRequest" asp-action="TodoInfo" asp-route-id="@t.id">
+                            @t.name
+                        </a>
+                    </td>
                 </tr>
             }
         </table>

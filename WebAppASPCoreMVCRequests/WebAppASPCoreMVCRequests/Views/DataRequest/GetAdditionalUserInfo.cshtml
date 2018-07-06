@@ -6,14 +6,14 @@
     (User User, Post LastPost, int CountComments, int UncompletedTasks, Post MostPopularPostByComments, Post MostPopularPostByLikes) CopyModel = Model;
 }
 
-<h2>Additional User Info</h2>
+<h2>Additional User Information</h2>
 
 <div class="data">
     <div class="container data">
         <table class="table table-bordered text-center">
             <thead class="thead-dark">
                 <tr>
-                    <th class="">ID</th>
+                    <th class="">User ID</th>
                     <th class="">Name</th>
                     <th class="">Avatar</th>
                     <th class="">Email</th>
@@ -24,7 +24,11 @@
             </thead>
             <tr>
                 <td>@CopyModel.User.Id</td>
-                <td><a asp-controller="DataRequest" asp-action="UserInfo" asp-route-id="@CopyModel.User.Id"> @CopyModel.User.Name</a> </td>
+                <td>
+                    <a asp-controller="DataRequest" asp-action="UserInfo" asp-route-id="@CopyModel.User.Id">
+                        @CopyModel.User.Name
+                    </a>
+                </td>
                 <td>@CopyModel.User.Avatar</td>
                 <td>@CopyModel.User.Email </td>
                 <td>@CopyModel.User.CreatedAt</td>
@@ -44,11 +48,39 @@
                 </tr>
             </thead>
             <tr>
-                <td>@CopyModel.LastPost.Id </td>
+                <td>
+                @if (CopyModel.LastPost != null)
+                {
+                    @CopyModel.LastPost.Id
+                }
+                else
+                {
+                    @: Absent
+                }
+                </td>
                 <td>@CopyModel.CountComments </td>
                 <td>@CopyModel.UncompletedTasks </td>
-                <td>@CopyModel.MostPopularPostByComments.Id</td>
-                <td>@CopyModel.MostPopularPostByLikes.Id </td>
+                <td>
+                    @if (CopyModel.MostPopularPostByComments != null)
+                    {
+                        @CopyModel.MostPopularPostByComments.Id
+                    }
+                    else
+                    {
+                        @: Absent
+                    }
+                </td>
+
+                <td>
+                    @if (CopyModel.MostPopularPostByLikes != null)
+                    {
+                        @CopyModel.MostPopularPostByLikes.Id
+                    }
+                    else
+                    {
+                        @: Absent
+                    }
+                </td>
             </tr>
         </table>
 

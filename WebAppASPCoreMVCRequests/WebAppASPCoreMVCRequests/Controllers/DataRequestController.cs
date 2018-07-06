@@ -78,6 +78,14 @@ namespace WebAppASPCoreMVCRequests.Controllers
             return View(res);
         }
 
+        public IActionResult TodoInfo(int id)
+        {
+            var res = dataSource.Todos.Find(t => t.Id == id);
+
+            return View(res);
+        }
+
+
         public IActionResult Posts()
         {
             var res = LinqRequests.GetPostUserList(dataSource.Posts, dataSource.Users);
