@@ -1,7 +1,11 @@
-﻿@model List<WebAppASPCoreMVCRequests.Models.User>
+﻿@model User
+
 @{
-    ViewData["Title"] = "GetAllData";
+    ViewData["Title"] = "UserInfo";
 }
+
+<h2>UserInfo</h2>
+
 <div class="container data">
     <table class="table table-bordered text-center">
         <thead class="thead-dark">
@@ -15,17 +19,13 @@
                 <th class="">Todos</th>
             </tr>
         </thead>
-        @foreach (var u in Model)
-        {
             <tr>
-                <td>@u.Id </td>
-                <td>@u.Name </td>
-                <td>@u.Avatar </td>
-                <td>@u.Email </td>
-                <td>@u.CreatedAt </td>
+                <td>@Model.Id </td>
+                <td>@Model.Name </td>
+                <td>@Model.Avatar </td>
+                <td>@Model.Email </td>
+                <td>@Model.CreatedAt </td>
                 <td>Post</td>
                 <td>Todo</td>
-            </tr>
-        }
     </table>
 </div>

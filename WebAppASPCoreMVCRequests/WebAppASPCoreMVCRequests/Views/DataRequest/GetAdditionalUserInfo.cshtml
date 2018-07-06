@@ -24,7 +24,7 @@
             </thead>
             <tr>
                 <td>@CopyModel.User.Id</td>
-                <td>@CopyModel.User.Name</td>
+                <td><a asp-controller="DataRequest" asp-action="UserInfo" asp-route-id="@CopyModel.User.Id"> @CopyModel.User.Name</a> </td>
                 <td>@CopyModel.User.Avatar</td>
                 <td>@CopyModel.User.Email </td>
                 <td>@CopyModel.User.CreatedAt</td>

@@ -65,5 +65,12 @@ namespace WebAppASPCoreMVCRequests.Controllers
             return View(res);
         }
 
+        public IActionResult UserInfo(int id)
+        {
+            var res = dataSource.Users.Find(u => u.Id==id);
+
+            return View(res);
+        }
+
     }
 }
