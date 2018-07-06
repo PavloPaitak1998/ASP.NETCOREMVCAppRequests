@@ -21,7 +21,7 @@
             <div class="body_todo">
                 @foreach (var t in u.Todos)
                 {
-                <p class="test">
+                <p class="todo_entity">
                     <i class="far fa-list-alt"></i> @t.Name &nbsp;
                     Comlete: @if (t.IsComplete){<i class="fas fa-check"></i> }
                     else {<i class="fas fa-times"></i> }

@@ -34,9 +34,31 @@
 footer {
     /*color: white;*/
 }
-/* Posts */
+/* Requests */
+.requests p{
+    font-size:20px;
+}
 
-.posts{
+.requests div,a{
+    margin-left:10px;
+}
+
+.requests hr {
+    height: 1px;
+    background: #B4B9C2;
+}
+
+.stracture {
+    font-size: 15px;
+    margin-left: 10px;
+    color: #aaacae;
+}
+
+.wrap{
+    margin-top:40px;
+}
+/* Posts */
+.posts {
 }
 
 .post {
@@ -152,8 +174,8 @@ a {
     padding: 3px 0;
 }
 
-.head_todo .my_title {
-
+    .head_todo .my_title {
+        margin-top:15px;
     }
 
 .body_todo {
@@ -162,8 +184,8 @@ a {
     padding: 10px;
 }
 
-.test{
-    margin:20px;
+.todo_entity {
+    margin: 30px;
 }
 
 .footer_todo {
