@@ -75,8 +75,9 @@ namespace WebAppASPCoreMVCRequests.Controllers
 
         public IActionResult Posts()
         {
+            var res = LinqRequests.GetPostUserList(dataSource.Posts, dataSource.Users);
 
-            return View(dataSource.Posts);
+            return View(res);
         }
 
 

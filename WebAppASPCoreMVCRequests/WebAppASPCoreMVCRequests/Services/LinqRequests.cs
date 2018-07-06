@@ -139,5 +139,11 @@ namespace WebAppASPCoreMVCRequests.Services
 
             return usersEntity;
         }
+
+        public static IEnumerable<(Post Post,User User)> GetPostUserList(IEnumerable<Post> _posts
+            ,IEnumerable<User> _users)
+        {
+            return _posts.Join(_users, p => p.UserId, u => u.Id, (p, u) => (Post: p, User: u));
+        }
     }
 }

@@ -35,25 +35,41 @@
 
 .post {
     border-radius: 5px;
-    width: 350px;
+    width: 400px;
     margin-bottom: 20px;
     font-size: 15px;
     background: #F5F5F5;
 }
 .head_post {
-    font-size: 20px;
+    display:flex;
+    font-size: 18px;
     background-color: #2E3035;
     color: white;
     border-radius: 5px 5px 0 0;
 }
 
+.avatar{
+    border-radius:50%;
+    width:35px;
+    margin:5px;
+}
+
+.my_title{
+    margin:5px;
+    margin-left:10px;
+}
+
+.name {
+    font-size: 15px;
+    color: #B4B9C2;
+}
+
 .body_post {
-    height: 80px;
     background-color: #f9f9fb;
+    font-size:20px;
 }
 
 .footer_post {
-    height: 30px;
     background-color: #474A51;
     color: white;
     border-radius: 0 0 5px 5px;

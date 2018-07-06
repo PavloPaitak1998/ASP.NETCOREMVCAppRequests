@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Post>
+﻿@model IEnumerable<(Post Post,User User)>
 
 @{
     ViewData["Title"] = "Posts";
@@ -7,17 +7,23 @@
 <h2>Posts</h2>
 
 <div class="container data posts ">
-    @foreach (var p in Model)
+    @foreach (var t in Model)
     {
         <div class="post center-block">
             <div class="head_post">
-                @p.Title
+                <div class="avatar">
+                    <img class="avatar" src="@t.User.Avatar" alt="Alternate Text" />
+                </div>
+                <div class="my_title">
+                    @t.Post.Title <br /> 
+                    <span class="name">@t.User.Name</span>
+                </div>
             </div>
             <div class="body_post">
-                @p.Body
+                @t.Post.Body
             </div>
             <div class="footer_post">
-                Likes: @p.Likes Data: @DateTime.Parse(p.CreatedAt).ToShortDateString()
+               Comments: Likes: @t.Post.Likes Data: @DateTime.Parse(t.Post.CreatedAt).ToShortDateString()
             </div>
         </div>
     }
