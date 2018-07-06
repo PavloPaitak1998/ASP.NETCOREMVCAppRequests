@@ -29,6 +29,7 @@
 
 /* My styles */
 
+/* Posts */
 
 .posts{
 }
@@ -117,7 +118,38 @@ a {
     text-decoration: none;
 }
 
+/* Todos */
+.todo {
+    border-radius: 5px;
+    width: 400px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    background: #F5F5F5;
+}
 
+.head_todo {
+    display: flex;
+    font-size: 18px;
+    background-color: #2E3035;
+    color: white;
+    border-radius: 5px 5px 0 0;
+    padding: 3px 0;
+}
+
+.body_todo {
+    background-color: #f9f9fb;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.footer_todo {
+    background-color: #474A51;
+    color: white;
+    border-radius: 0 0 5px 5px;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 10px;
+}
 
 .wrapper {
     max-width: 1076px;

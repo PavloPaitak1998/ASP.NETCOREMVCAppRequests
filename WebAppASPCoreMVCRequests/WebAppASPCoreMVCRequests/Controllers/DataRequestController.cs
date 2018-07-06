@@ -80,6 +80,11 @@ namespace WebAppASPCoreMVCRequests.Controllers
             return View(res);
         }
 
+        public IActionResult Todos()
+        {
+
+            return View(dataSource.Users);
+        }
 
     }
 }

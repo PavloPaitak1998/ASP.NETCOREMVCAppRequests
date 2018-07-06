@@ -1,0 +1,41 @@
+﻿@model List<User>
+
+@{
+    ViewData["Title"] = "Todos";
+}
+
+<div class="container data todos ">
+    <h2>Todos</h2>
+
+    @foreach (var u in Model)
+    {
+        <div class="todo">
+            <div class="head_todo">
+                <div class="avatar">
+                    <img class="avatar" src="@u.Avatar" alt="Alternate Text" />
+                </div>
+                <div class="my_title">
+                    @u.Name <br />
+                </div>
+            </div>
+            <div class="body_todo">
+                @foreach (var t in u.Todos)
+                {
+                <p> Name: @t.Name Comlete: @t.IsComplete Date: @t.CreatedAt  </p>  
+                }
+            </div>
+            <div class="footer_post" >
+
+                <div>
+                    Email: @u.Email
+                </div>
+
+                <div>
+                    Date: @u.CreatedAt
+                </div>
+
+            </div>
+        </div>
+    }
+
+</div>
