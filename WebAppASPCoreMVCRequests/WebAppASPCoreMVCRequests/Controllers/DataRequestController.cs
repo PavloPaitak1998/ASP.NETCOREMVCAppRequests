@@ -16,13 +16,11 @@ namespace WebAppASPCoreMVCRequests.Controllers
 
         public IActionResult Info()
         {
-
             return View();
         }
 
         public IActionResult GetAllData()
         {
-
             return View(dataSource.Users);
         }
 
@@ -82,7 +80,6 @@ namespace WebAppASPCoreMVCRequests.Controllers
 
         public IActionResult Todos()
         {
-
             return View(dataSource.Users);
         }
 

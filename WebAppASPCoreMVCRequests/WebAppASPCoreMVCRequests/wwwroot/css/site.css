@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    /*background: linear-gradient(to bottom, #00A99D,#1B1464);*/
     background-color: #F5F5F5;
 }
 
@@ -27,8 +28,12 @@
     margin: 15px;
 }
 
+
 /* My styles */
 
+footer {
+    /*color: white;*/
+}
 /* Posts */
 
 .posts{
@@ -147,10 +152,18 @@ a {
     padding: 3px 0;
 }
 
+.head_todo .my_title {
+
+    }
+
 .body_todo {
     background-color: #f9f9fb;
     font-size: 20px;
     padding: 10px;
+}
+
+.test{
+    margin:20px;
 }
 
 .footer_todo {
