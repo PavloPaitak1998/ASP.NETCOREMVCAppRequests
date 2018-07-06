@@ -1,0 +1,29 @@
+﻿@model IEnumerable<(int id,string name)>
+
+@{
+    ViewData["Title"] = "GetUserTodos";
+}
+
+<h2>
+    List (id, name) from list todos which is complete for user
+</h2>
+
+<div class="data">
+    <div class="container data">
+        <table class="table table-bordered text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="">ID</th>
+                    <th class="">Name</th>
+                </tr>
+            </thead>
+            @foreach (var t in Model)
+            {
+                <tr>
+                    <td>@t.id </td>
+                    <td>@t.name </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

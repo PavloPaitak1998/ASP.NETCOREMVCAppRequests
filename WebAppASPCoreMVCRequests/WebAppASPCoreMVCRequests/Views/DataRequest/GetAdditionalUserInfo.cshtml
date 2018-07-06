@@ -1,0 +1,56 @@
+﻿@model ValueTuple<User,Post,int,int,Post,Post> 
+
+@{
+    ViewData["Title"] = "GetAdditionalUserInfo";
+
+    (User User, Post LastPost, int CountComments, int UncompletedTasks, Post MostPopularPostByComments, Post MostPopularPostByLikes) CopyModel = Model;
+}
+
+<h2>Additional User Info</h2>
+
+<div class="data">
+    <div class="container data">
+        <table class="table table-bordered text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="">ID</th>
+                    <th class="">Name</th>
+                    <th class="">Avatar</th>
+                    <th class="">Email</th>
+                    <th class="">Created At</th>
+                    <th class="">Posts</th>
+                    <th class="">Todos</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>@CopyModel.User.Id</td>
+                <td>@CopyModel.User.Name</td>
+                <td>@CopyModel.User.Avatar</td>
+                <td>@CopyModel.User.Email </td>
+                <td>@CopyModel.User.CreatedAt</td>
+                <td>Post</td>
+                <td>Todo</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="">LastPost</th>
+                    <th class="">CountComments</th>
+                    <th class="">UncompletedTasks</th>
+                    <th class="">MostPopularPostByComments</th>
+                    <th class="">MostPopularPostByLikes</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>@CopyModel.LastPost.Id </td>
+                <td>@CopyModel.CountComments </td>
+                <td>@CopyModel.UncompletedTasks </td>
+                <td>@CopyModel.MostPopularPostByComments.Id</td>
+                <td>@CopyModel.MostPopularPostByLikes.Id </td>
+            </tr>
+        </table>
+
+    </div>
+</div>

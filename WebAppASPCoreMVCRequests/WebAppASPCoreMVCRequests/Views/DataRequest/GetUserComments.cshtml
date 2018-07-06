@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WebAppASPCoreMVCRequests.Models.Comment >
+
+@{
+    ViewData["Title"] = "GetUserComments";
+}
+
+<h2>Comments under user's posts where comment body < 50</h2>
+
+<div class="data">
+    <div class="container data">
+        <table class="table table-bordered text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="">ID</th>
+                    <th class="">Body  </th>
+                    <th class="">UserId  </th>
+                    <th class="">PostId  </th>
+                    <th class="">Likes  At</th>
+                    <th class="">CreatedAt </th>
+                </tr>
+            </thead>
+            @foreach (var c in Model)
+            {
+                <tr>
+                    <td>@c.Id</td>
+                    <td>@c.Body</td>
+                    <td>@c.UserId</td>
+                    <td>@c.PostId </td>
+                    <td>@c.Likes</td>
+                    <td>@c.CreatedAt</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

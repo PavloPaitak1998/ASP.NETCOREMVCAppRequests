@@ -32,34 +32,37 @@ namespace WebAppASPCoreMVCRequests.Controllers
             return View(commentsCount);
         }
 
-        public IActionResult GetUserComments()
+        public IActionResult GetUserComments(int id)
         {
-
-            return View(dataSource.Users);
+            var res = LinqRequests.GetUserComments(id, dataSource.Posts);
+            return View(res);
         }
 
-        public IActionResult GetUserTodos()
+        public IActionResult GetUserTodos(int id)
         {
-
-            return View(dataSource.Users);
+            var res = LinqRequests.GetUserTodos(id, dataSource.Todos);
+            return View(res);
         }
 
         public IActionResult GetSortedUsers()
         {
+            var res = LinqRequests.GetSortedUsers(dataSource.Users);
 
-            return View(dataSource.Users);
+            return View(res);
         }
 
-        public IActionResult GetAdditionalUserInfo()
+        public IActionResult GetAdditionalUserInfo(int id)
         {
+            var res = LinqRequests.GetAdditionalUserInfo(id, dataSource.Users);
 
-            return View(dataSource.Users);
+            return View(res);
         }
 
-        public IActionResult GetAdditionalPostInfo()
+        public IActionResult GetAdditionalPostInfo(int id)
         {
+            var res = LinqRequests.GetAdditionalPostInfo(id, dataSource.Posts);
 
-            return View(dataSource.Users);
+            return View(res);
         }
 
     }

@@ -15,24 +15,47 @@
             <input type="text" name="id" />
         </div>
         <div>
-            <input type="submit" value="Retrieve" class="btn btn-default"/>
+            <input type="submit" value="Retrieve" class="btn btn-default" />
         </div>
     </form>
-        <p>
-            Get user comments where comment body < 50
-        </p>
-        <a asp-controller="DataRequest" asp-action="" class="btn btn-default">Retrieve</a>
+    <br />
 
+    <form asp-action="GetUserComments" asp-controller="DataRequest" asp-antiforgery="true">
         <p>
-            Get list (id, name) from list todos which is complete for user
+            Get comments under user's posts where comment body < 50
         </p>
-        <a asp-controller="DataRequest" asp-action="" class="btn btn-default">Retrieve</a>
+        <div>
+            <label>UserId</label>
+            <input type="text" name="id" />
+        </div>
+        <div>
+            <input type="submit" value="Retrieve" class="btn btn-default" />
+        </div>
+    </form>
+    <br />
 
+    <form asp-action="GetUserTodos" asp-controller="DataRequest" asp-antiforgery="true">
         <p>
-            Get list of users alphabetically (ascending) with sorted todo items by length name (descending)
+            Get list (id, name) from list todos which is complete for user.
         </p>
-        <a asp-controller="DataRequest" asp-action="" class="btn btn-default">Retrieve</a>
+        <div>
+            <label>UserId</label>
+            <input type="text" name="id" />
+        </div>
+        <div>
+            <input type="submit" value="Retrieve" class="btn btn-default" />
+        </div>
+    </form>
+    <br />
 
+    <p>
+        Get list of users alphabetically (ascending) with sorted todo items by length name (descending)
+    </p>
+    <a asp-controller="DataRequest" asp-action="GetSortedUsers" class="btn btn-default">Retrieve</a>
+    <br />
+    <br />
+
+    <form asp-action="GetAdditionalUserInfo" asp-controller="DataRequest" asp-antiforgery="true">
         <p>
             Get the following structure
             User<br />
@@ -43,8 +66,17 @@
             text length of more than 80 characters)<br />
             The most popular user post(where most of all are keynotes<br />
         </p>
-        <a asp-controller="DataRequest" asp-action="" class="btn btn-default">Retrieve</a>
+        <div>
+            <label>UserId</label>
+            <input type="text" name="id" />
+        </div>
+        <div>
+            <input type="submit" value="Retrieve" class="btn btn-default" />
+        </div>
+    </form>
+    <br />
 
+    <form asp-action="GetAdditionalPostInfo" asp-controller="DataRequest" asp-antiforgery="true">
         <p>
             Get the following structure <br />
             Post<br />
@@ -53,11 +85,20 @@
             The number of comments under the post where or 0 words or the<br />
             length of the text is < 80
         </p>
-        <a asp-controller="DataRequest" asp-action="" class="btn btn-default">Retrieve</a>
+        <div>
+            <label>PostId</label>
+            <input type="text" name="id" />
+        </div>
+        <div>
+            <input type="submit" value="Retrieve" class="btn btn-default" />
+        </div>
+    </form>
+    <br />
 
-        <p>
-            Get All Data
-        </p>
-        <a asp-controller="DataRequest" asp-action="GetAllData" class="btn btn-default">Retrieve</a>
-    
+
+    <p>
+        Get All Data
+    </p>
+    <a asp-controller="DataRequest" asp-action="GetAllData" class="btn btn-default">Retrieve</a>
+
 </div>

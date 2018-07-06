@@ -1,0 +1,51 @@
+﻿@model ValueTuple<Post,Comment,Comment,int>
+
+@{
+    ViewData["Title"] = "GetAdditionalPostInfo";
+    (Post Post, Comment LongestComment, Comment LikestComment, int CountComments) CopyModel = Model;
+}
+
+<h2>GetAdditionalPostInfo</h2>
+
+<div class="data">
+    <div class="container data">
+        <table class="table table-bordered text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="">ID</th>
+                    <th class="">Title </th>
+                    <th class="">Body </th>
+                    <th class="">UserId </th>
+                    <th class="">Likes  At</th>
+                    <th class="">CreatedAt</th>
+                    <th class="">Comments </th>
+                </tr>
+            </thead>
+            <tr>
+                <td>@CopyModel.Post.Id </td>
+                <td>@CopyModel.Post.Title </td>
+                <td>@CopyModel.Post.Body </td>
+                <td>@CopyModel.Post.UserId </td>
+                <td>@CopyModel.Post.Likes</td>
+                <td>@CopyModel.Post.CreatedAt</td>
+                <td>Comments</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="">LongestComment</th>
+                    <th class="">LikestComment</th>
+                    <th class="">CountComments</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>@CopyModel.LongestComment </td>
+                <td>@CopyModel.LikestComment </td>
+                <td>@CopyModel.CountComments </td>
+            </tr>
+        </table>
+
+    </div>
+</div>

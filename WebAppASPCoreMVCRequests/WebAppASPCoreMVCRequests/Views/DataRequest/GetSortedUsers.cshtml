@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WebAppASPCoreMVCRequests.Models.User>
+
+@{
+    ViewData["Title"] = "GetSortedUsers";
+}
+
+<h2>Sorted Users</h2>
+
+<div class="container data">
+    <table class="table table-bordered text-center">
+        <thead class="thead-dark">
+            <tr>
+                <th class="">ID</th>
+                <th class="">Name</th>
+                <th class="">Avatar</th>
+                <th class="">Email</th>
+                <th class="">Created At</th>
+                <th class="">Posts</th>
+                <th class="">Todos</th>
+            </tr>
+        </thead>
+        
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.Id </td>
+                <td>@u.Name </td>
+                <td>@u.Avatar </td>
+                <td>@u.Email </td>
+                <td>@u.CreatedAt </td>
+                <td>Post</td>
+                <td>Todo</td>
+            </tr>
+        }
+    </table>
+</div>
