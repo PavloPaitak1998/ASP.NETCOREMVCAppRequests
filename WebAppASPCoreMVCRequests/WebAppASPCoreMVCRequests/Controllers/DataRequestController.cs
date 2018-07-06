@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using WebAppASPCoreMVCRequests.Data;
 using WebAppASPCoreMVCRequests.Services;
 
@@ -71,6 +72,13 @@ namespace WebAppASPCoreMVCRequests.Controllers
 
             return View(res);
         }
+
+        public IActionResult Posts()
+        {
+
+            return View(dataSource.Posts);
+        }
+
 
     }
 }

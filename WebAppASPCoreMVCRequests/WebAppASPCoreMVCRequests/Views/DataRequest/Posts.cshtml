@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Post>
+
+@{
+    ViewData["Title"] = "Posts";
+}
+
+<h2>Posts</h2>
+
+<div class="container data posts ">
+    @foreach (var p in Model)
+    {
+        <div class="post center-block">
+            <div class="head_post">
+                @p.Title
+            </div>
+            <div class="body_post">
+                @p.Body
+            </div>
+            <div class="footer_post">
+                Likes: @p.Likes Data: @DateTime.Parse(p.CreatedAt).ToShortDateString()
+            </div>
+        </div>
+    }
+
+</div>

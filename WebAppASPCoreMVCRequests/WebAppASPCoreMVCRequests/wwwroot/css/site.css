@@ -28,8 +28,39 @@
 }
 
 /* My styles */
-.data{
-    padding-top:20px;
+.posts{
+    max-width:1026px;
+    margin:20px auto;
+}
+
+.post {
+    border-radius: 5px;
+    width: 350px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    background: #F5F5F5;
+}
+.head_post {
+    font-size: 20px;
+    background-color: #2E3035;
+    color: white;
+    border-radius: 5px 5px 0 0;
+}
+
+.body_post {
+    height: 80px;
+    background-color: #f9f9fb;
+}
+
+.footer_post {
+    height: 30px;
+    background-color: #474A51;
+    color: white;
+    border-radius: 0 0 5px 5px;
+}
+
+.data {
+    padding-top: 20px;
 }
 
 .thead-dark th {
