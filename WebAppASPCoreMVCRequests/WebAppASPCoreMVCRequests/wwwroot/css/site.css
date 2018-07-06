@@ -119,9 +119,20 @@ a {
 }
 
 /* Todos */
+.body_todo .far {
+    color:black;
+}
+
+.fa-check{
+    color:lawngreen;
+}
+
+.fa-times{
+    color:red;
+}
 .todo {
     border-radius: 5px;
-    width: 400px;
+    width: 600px;
     margin-bottom: 20px;
     font-size: 15px;
     background: #F5F5F5;

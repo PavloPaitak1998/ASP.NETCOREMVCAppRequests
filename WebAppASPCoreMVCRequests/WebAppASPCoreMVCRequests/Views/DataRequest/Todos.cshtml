@@ -21,17 +21,27 @@
             <div class="body_todo">
                 @foreach (var t in u.Todos)
                 {
-                <p> Name: @t.Name Comlete: @t.IsComplete Date: @t.CreatedAt  </p>  
+                <p>
+                    <i class="far fa-list-alt"></i> @t.Name &nbsp;
+                    Comlete: @if (t.IsComplete){<i class="fas fa-check"></i> }
+                    else {<i class="fas fa-times"></i> }
+
+                    &nbsp;
+                    <i class="far fa-calendar-alt"></i> @DateTime.Parse(t.CreatedAt).ToShortDateString()
+                </p>  
                 }
             </div>
-            <div class="footer_post" >
-
+            <div class="footer_post">
                 <div>
-                    Email: @u.Email
+                    <i class="far fa-user"></i> Id @u.Id
                 </div>
 
                 <div>
-                    Date: @u.CreatedAt
+                    <i class="far fa-envelope"></i> @u.Email
+                </div>
+
+                <div>
+                    <i class="far fa-calendar-alt"></i> @DateTime.Parse(u.CreatedAt).ToShortDateString()
                 </div>
 
             </div>
