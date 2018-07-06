@@ -28,9 +28,9 @@
 }
 
 /* My styles */
+
+
 .posts{
-    max-width:1026px;
-    margin:20px auto;
 }
 
 .post {
@@ -46,6 +46,7 @@
     background-color: #2E3035;
     color: white;
     border-radius: 5px 5px 0 0;
+    padding:3px 0;
 }
 
 .avatar{
@@ -67,12 +68,38 @@
 .body_post {
     background-color: #f9f9fb;
     font-size:20px;
+    padding:10px;
 }
 
 .footer_post {
     background-color: #474A51;
     color: white;
     border-radius: 0 0 5px 5px;
+    display:flex;
+    justify-content:space-around;
+    padding:5px 10px;
+}
+
+.comments {
+    width: 400px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #B4B9C2;
+}
+
+.comment {
+    padding: 4px;
+    border-radius: 5px;
+    margin: 2px 0;
+    background: #2E3035;
+}
+
+.comment_data{
+    color:white;
+}
+
+.far {
+    color: white;
 }
 
 .data {

@@ -4,27 +4,58 @@
     ViewData["Title"] = "Posts";
 }
 
-<h2>Posts</h2>
+
 
 <div class="container data posts ">
+    <h2>Posts</h2>
     @foreach (var t in Model)
     {
-        <div class="post center-block">
+        <div class="post">
             <div class="head_post">
                 <div class="avatar">
                     <img class="avatar" src="@t.User.Avatar" alt="Alternate Text" />
                 </div>
                 <div class="my_title">
-                    @t.Post.Title <br /> 
+                    @t.Post.Title <br />
                     <span class="name">@t.User.Name</span>
                 </div>
             </div>
             <div class="body_post">
                 @t.Post.Body
             </div>
-            <div class="footer_post">
-               Comments: Likes: @t.Post.Likes Data: @DateTime.Parse(t.Post.CreatedAt).ToShortDateString()
+            <div class="footer_post" id="accordion">
+
+                <div>
+                    <a data-toggle="collapse" data-parent="#accordion" href="@String.Concat("#collapse", t.Post.Id.ToString())">
+                        <i class="far fa-comment-dots"></i>
+                    </a>
+                </div>
+
+                <div>
+                    <i class="far fa-heart"></i> @t.Post.Likes
+
+                </div>
+
+                <div>
+                    <i class="far fa-calendar-alt"></i> @DateTime.Parse(t.Post.CreatedAt).ToShortDateString()
+
+                </div>
             </div>
+        </div>
+        <div id="@String.Concat("collapse", t.Post.Id.ToString())"
+             class="comments panel-collapse collapse ">
+
+            @foreach (var c in t.Post.Comments)
+            {
+                <div class="panel-body comment">
+                    &nbsp @c.Body  &nbsp
+                    <span class="comment_data">
+                        <i class="far fa-user"></i> Id @c.UserId
+                        <i class="far fa-heart"></i> @c.Likes
+                        <i class="far fa-calendar-alt"></i> @DateTime.Parse(c.CreatedAt).ToShortDateString()
+                    </span>
+                </div>
+            }
         </div>
     }
 
