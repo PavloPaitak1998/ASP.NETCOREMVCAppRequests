@@ -71,6 +71,13 @@ namespace WebAppASPCoreMVCRequests.Controllers
             return View(res);
         }
 
+        public IActionResult PostInfo(int id)
+        {
+            var res = LinqRequests.GetPostUserList(dataSource.Posts, dataSource.Users).FirstOrDefault(t => t.Post.Id == id);
+
+            return View(res);
+        }
+
         public IActionResult Posts()
         {
             var res = LinqRequests.GetPostUserList(dataSource.Posts, dataSource.Users);

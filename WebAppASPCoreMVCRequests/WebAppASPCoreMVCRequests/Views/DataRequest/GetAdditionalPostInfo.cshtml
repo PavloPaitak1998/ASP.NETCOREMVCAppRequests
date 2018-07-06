@@ -16,14 +16,14 @@
                     <th class="">Title </th>
                     <th class="">Body </th>
                     <th class="">UserId </th>
-                    <th class="">Likes  At</th>
-                    <th class="">CreatedAt</th>
+                    <th class="">Likes </th>
+                    <th class="">CreatedAt </th>
                     <th class="">Comments </th>
                 </tr>
             </thead>
             <tr>
                 <td>@CopyModel.Post.Id </td>
-                <td>@CopyModel.Post.Title </td>
+                <td><a asp-controller="DataRequest" asp-action="PostInfo" asp-route-id="@CopyModel.Post.Id"> @CopyModel.Post.Title</a> </td>
                 <td>@CopyModel.Post.Body </td>
                 <td>@CopyModel.Post.UserId </td>
                 <td>@CopyModel.Post.Likes</td>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<(WebAppASPCoreMVCRequests.Models.Post Posts,int Count)>
+﻿@model IEnumerable<(WebAppASPCoreMVCRequests.Models.Post Post,int Count)>
 @{
     ViewData["Title"] = "GetCommentsCount";
 }
@@ -22,12 +22,12 @@
             @foreach (var t in Model)
              {
                 <tr>
-                    <td>@t.Posts.Id</td>
-                    <td>@t.Posts.Title</td>
-                    <td>@t.Posts.Body</td>
-                    <td>@t.Posts.UserId </td>
-                    <td>@t.Posts.Likes</td>
-                    <td>@t.Posts.CreatedAt</td>
+                    <td>@t.Post.Id</td>
+                    <td><a asp-controller="DataRequest" asp-action="PostInfo" asp-route-id="@t.Post.Id"> @t.Post.Title</a></td>
+                    <td>@t.Post.Body</td>
+                    <td>@t.Post.UserId </td>
+                    <td>@t.Post.Likes</td>
+                    <td>@t.Post.CreatedAt</td>
                     <td>@t.Count</td>
                 </tr>
              }

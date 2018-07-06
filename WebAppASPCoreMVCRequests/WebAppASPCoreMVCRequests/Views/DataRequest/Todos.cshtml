@@ -12,10 +12,15 @@
         <div class="todo">
             <div class="head_todo">
                 <div class="avatar">
-                    <img class="avatar" src="@u.Avatar" alt="Alternate Text" />
+                    <a asp-controller="DataRequest" asp-action="UserInfo" asp-route-id="@u.Id"> 
+                        <img class="avatar" src="@u.Avatar" alt="Alternate Text" />
+                    </a>
                 </div>
                 <div class="my_title">
-                    @u.Name <br />
+                    <a asp-controller="DataRequest" asp-action="UserInfo" asp-route-id="@u.Id">
+                        @u.Name
+                    </a>
+                     <br />
                 </div>
             </div>
             <div class="body_todo">

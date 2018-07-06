@@ -39,8 +39,12 @@ footer {
     font-size:20px;
 }
 
-.requests div,a{
+.requests div{
     margin-left:10px;
+}
+
+.requests a {
+    margin-left: 10px;
 }
 
 .requests hr {
