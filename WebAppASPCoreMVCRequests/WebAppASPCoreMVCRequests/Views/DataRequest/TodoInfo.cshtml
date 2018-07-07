@@ -10,11 +10,11 @@
     <table class="table table-bordered text-center">
         <thead class="thead-dark">
             <tr>
-                <th class="">ID</th>
-                <th class="">Name</th>
-                <th class="">IsComplete </th>
-                <th class="">UserId </th>
-                <th class="">Created At</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>IsComplete </th>
+                <th>UserId </th>
+                <th>Created At</th>
             </tr>
         </thead>
 
@@ -23,7 +23,7 @@
                 <td>@Model.Name </td>
                 <td>@Model.IsComplete </td>
                 <td>@Model.UserId </td>
-                <td>@Model.CreatedAt </td>
+                <td>@DateTime.Parse(Model.CreatedAt).ToUniversalTime() </td>
             </tr>
     </table>
 </div>

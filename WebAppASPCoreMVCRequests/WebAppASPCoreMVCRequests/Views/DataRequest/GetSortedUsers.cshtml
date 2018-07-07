@@ -6,31 +6,33 @@
 
 <h2>Sorted Users</h2>
 
-<div class="container data">
+<div class="container data sorted-users">
     <table class="table table-bordered text-center">
         <thead class="thead-dark">
             <tr>
-                <th class="">User ID</th>
-                <th class="">Name</th>
-                <th class="">Avatar</th>
-                <th class="">Email</th>
-                <th class="">Created At</th>
-                <th class="">Posts</th>
-                <th class="">Todos</th>
+                <th>User</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Avatar</th>
+                <th>Email</th>
+                <th>Created At</th>
+                <th>Posts</th>
+                <th>Todos</th>
             </tr>
         </thead>
         
         @foreach (var u in Model)
         {
-            <tr>
-                <td>@u.Id </td>
-                <td>@u.Name </td>
-                <td>@u.Avatar </td>
-                <td>@u.Email </td>
-                <td>@u.CreatedAt </td>
-                <td>Post</td>
-                <td>Todo</td>
-            </tr>
+        <tr>
+            <td><i class="far fa-user"></i></td>
+            <td>@u.Id </td>
+            <td>@u.Name </td>
+            <td>@u.Avatar </td>
+            <td>@u.Email </td>
+            <td>@DateTime.Parse(u.CreatedAt).ToUniversalTime() </td>
+            <td>@u.Posts.Count()</td>
+            <td>Todo</td>
+        </tr>
         }
     </table>
 </div>
