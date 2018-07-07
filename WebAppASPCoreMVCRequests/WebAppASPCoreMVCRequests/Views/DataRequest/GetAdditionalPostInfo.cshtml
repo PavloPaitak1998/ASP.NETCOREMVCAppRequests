@@ -5,14 +5,19 @@
     (Post Post, Comment LongestComment, Comment LikestComment, int CountComments) CopyModel = Model;
 }
 
-<h2>Additional Post Information</h2>
 
-<div class="data">
+
+<div class="data aditional-post-info">
+
+    <h2>Additional Post Information</h2>
+
     <div class="container data">
+
         <table class="table table-bordered text-center">
             <thead class="thead-dark">
                 <tr>
-                    <th class="">Post ID</th>
+                    <th class="">User</th>
+                    <th class="">ID</th>
                     <th class="">Title </th>
                     <th class="">Body </th>
                     <th class="">UserId </th>
@@ -22,50 +27,160 @@
                 </tr>
             </thead>
             <tr>
+                <td>&nbsp;</td>
                 <td>@CopyModel.Post.Id </td>
-                <td><a asp-controller="DataRequest" asp-action="PostInfo" asp-route-id="@CopyModel.Post.Id"> @CopyModel.Post.Title</a> </td>
+                <td>
+                    <a asp-controller="DataRequest" asp-action="PostInfo" asp-route-id="@CopyModel.Post.Id">
+                        @CopyModel.Post.Title
+                    </a>
+                </td>
                 <td>@CopyModel.Post.Body </td>
                 <td>@CopyModel.Post.UserId </td>
                 <td>@CopyModel.Post.Likes</td>
                 <td>@CopyModel.Post.CreatedAt</td>
-                <td>Comments</td>
+                <td>
+                    <a data-toggle="collapse" href="#collapse1">
+                        Comments
+                    </a>
+                </td>
             </tr>
         </table>
+
+        @if (CopyModel.Post.Comments.Count() < 1)
+        {
+            <div id="collapse1" class="panel-collapse collapse ">
+                <h3 class="my-text-warning panel-body">No Comments</h3>
+            </div>
+        }
+        else
+        {
+            <div id="collapse1" class="collapse panel-collapse">
+
+                <table class="table table-bordered text-center">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Comments </th>
+                            <th>Id </th>
+                            <th>Body </th>
+                            <th>UserId </th>
+                            <th>PostId </th>
+                            <th>Likes </th>
+                            <th>CreatedAt </th>
+                        </tr>
+                    </thead>
+                    @foreach (var c in CopyModel.Post.Comments)
+                    {
+                        <tr>
+                            <td><i class="far fa-comment-dots"></i></td>
+                            <td>@c.Id</td>
+                            <td>@c.Body</td>
+                            <td>@c.UserId</td>
+                            <td>@c.PostId</td>
+                            <td>@c.Likes</td>
+                            <td>@c.CreatedAt</td>
+                        </tr>
+                    }
+                </table>
+
+            </div>
+        }
+
 
         <table class="table table-bordered text-center">
             <thead class="thead-dark">
                 <tr>
-                    <th class="">LongestComment</th>
-                    <th class="">LikestComment</th>
+                    <th class="">LongestComment Id</th>
+                    <th class="">LikestComment Id</th>
                     <th class="">CountComments</th>
                 </tr>
             </thead>
             <tr>
                 <td>
-                @if (CopyModel.LongestComment != null)
-                {
-                    @CopyModel.LongestComment.Id
-                }
-                else
-                {
-                    @: Absent
-                }
+                    @if (CopyModel.LongestComment != null)
+                    {
+                        @CopyModel.LongestComment.Id
+
+                        <span class="comment-info">
+                            <a data-toggle="collapse" href="#collapse2">
+                                info
+                            </a>
+                        </span>
+                    }
+                    else
+                    {
+                        @: Absent
+                    }
                 </td>
                 <td>
-                @if (CopyModel.LikestComment != null)
-                {
-                    @CopyModel.LikestComment.Id
-                }
-                else
-                {
-                    @: Absent
-                }
+                    @if (CopyModel.LikestComment != null)
+                     {
+                        @CopyModel.LikestComment.Id
+
+                        <span class="comment-info">
+                            <a data-toggle="collapse" href="#collapse3">
+                                info
+                            </a>
+                        </span>
+
+                     }
+                     else
+                     {
+                          @: Absent
+                     }
                 </td>
-                <td
-                    >@CopyModel.CountComments 
-                </td>
+                <td>@CopyModel.CountComments</td>
             </tr>
         </table>
+
+        <div id="collapse2" class="collapse panel-collapse">
+            <table class="table table-bordered text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Longest </th>
+                        <th>Id </th>
+                        <th>Body </th>
+                        <th>UserId </th>
+                        <th>PostId </th>
+                        <th>Likes </th>
+                        <th>CreatedAt </th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td><i class="far fa-comment-dots"></i></td>
+                    <td>@CopyModel.LongestComment.Id</td>
+                    <td>@CopyModel.LongestComment.Body</td>
+                    <td>@CopyModel.LongestComment.UserId</td>
+                    <td>@CopyModel.LongestComment.PostId</td>
+                    <td>@CopyModel.LongestComment.Likes</td>
+                    <td>@CopyModel.LongestComment.CreatedAt</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="collapse3" class="collapse panel-collapse">
+            <table class="table table-bordered text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Likest </th>
+                        <th>Id </th>
+                        <th>Body </th>
+                        <th>UserId </th>
+                        <th>PostId </th>
+                        <th>Likes </th>
+                        <th>CreatedAt </th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td><i class="far fa-comment-dots"></i></td>
+                    <td>@CopyModel.LikestComment.Id</td>
+                    <td>@CopyModel.LikestComment.Body</td>
+                    <td>@CopyModel.LikestComment.UserId</td>
+                    <td>@CopyModel.LikestComment.PostId</td>
+                    <td>@CopyModel.LikestComment.Likes</td>
+                    <td>@CopyModel.LikestComment.CreatedAt</td>
+                </tr>
+            </table>
+        </div>
 
     </div>
 </div>

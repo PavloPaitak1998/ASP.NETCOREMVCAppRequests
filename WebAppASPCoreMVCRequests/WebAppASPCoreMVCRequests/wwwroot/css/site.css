@@ -4,6 +4,9 @@
     /*background: linear-gradient(to bottom, #00A99D,#1B1464);*/
     background-color: #F5F5F5;
 }
+a {
+    text-decoration: none;
+}
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
@@ -36,9 +39,14 @@
 footer {
     /*color: white;*/
 }
+/* aditional-post-info */
+.aditional-post-info .far{
+    color:black;
+    font-size:15px;
+}
 /* Requests */
-.requests p{
-    font-size:20px;
+.requests p {
+    font-size: 20px;
 }
 
 .requests div{
@@ -145,10 +153,6 @@ footer {
     background-color: #212529;
     border-color: #32383e;
     text-align: center;
-}
-
-a {
-    text-decoration: none;
 }
 
 /* Todos */
