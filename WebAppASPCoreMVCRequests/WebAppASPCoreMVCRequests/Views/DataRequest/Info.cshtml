@@ -1,6 +1,10 @@
-﻿
+﻿@model ValueTuple<string,string>
+
 @{
     ViewData["Title"] = "Info";
+
+    var actionId = Model.Item1;
+    var message = Model.Item2;
 }
 
 
@@ -14,9 +18,17 @@
             </p>
             <div>
                 <label>UserId</label> <br />
-                <input type="text" name="id" required oninvalid="setCustomValidity('Id is required')" oninput="setCustomValidity('')" />
+                <input type="text" name="id" pattern="^[ 0-9]+$"  required  
+                       oninvalid="setCustomValidity('Id is required and consist of numbers [0-9]')"
+                       oninput="setCustomValidity('')"/>
                 <input type="submit" value="Retrieve" class="btn btn-default" />
             </div>
+            @if (actionId=="1")
+            {
+                <div>
+                    <p class="my-text-warning"> @message</p>
+                </div>
+            }
         </form>
         <hr />
 
@@ -26,10 +38,18 @@
             </p>
             <div>
                 <label>UserId</label> <br />
-                <input type="text" name="id" required oninvalid="setCustomValidity('Id is required')" oninput="setCustomValidity('')" />
+                <input type="text" name="id" pattern="^[ 0-9]+$" required 
+                       oninvalid="setCustomValidity('Id is required and consist of numbers [0-9]')" 
+                       oninput="setCustomValidity('')"/>
                 <input type="submit" value="Retrieve" class="btn btn-default" />
-
             </div>
+            @if (actionId=="2")
+            {
+                <div>
+                    <p class="my-text-warning"> @message</p>
+                </div>
+            }
+
         </form>
         <hr />
 
@@ -39,10 +59,18 @@
             </p>
             <div>
                 <label>UserId</label> <br />
-                <input type="text" name="id" required oninvalid="setCustomValidity('Id is required')" oninput="setCustomValidity('')" />
+                <input type="text" name="id" pattern="^[ 0-9]+$" required 
+                       oninvalid="setCustomValidity('Id is required and consist of numbers [0-9]')" 
+                       oninput="setCustomValidity('')"/>
                 <input type="submit" value="Retrieve" class="btn btn-default" />
-
             </div>
+            @if (actionId=="3")
+            {
+                <div>
+                    <p class="my-text-warning"> @message</p>
+                </div>
+            }
+
         </form>
         <hr />
 
@@ -61,10 +89,18 @@
             </p>
             <div>
                 <label>UserId</label> <br />
-                <input type="text" name="id" required oninvalid="setCustomValidity('Id is required')" oninput="setCustomValidity('')" />
+                <input type="text" name="id" pattern="^[ 0-9]+$" required 
+                       oninvalid="setCustomValidity('Id is required and consist of numbers [0-9]')" 
+                       oninput="setCustomValidity('')"/>
                 <input type="submit" value="Retrieve" class="btn btn-default" />
-
             </div>
+            @if (actionId=="5")
+            {
+                <div>
+                    <p class="my-text-warning"> @message</p>
+                </div>
+            }
+
         </form>
         <hr />
 
@@ -81,10 +117,18 @@
             </p>
             <div>
                 <label >PostId</label> <br />
-                <input type="text" name="id" required oninvalid="setCustomValidity('Id is required')" oninput="setCustomValidity('')" />
+                <input type="text" name="id" pattern="^[ 0-9]+$" required 
+                       oninvalid="setCustomValidity('Id is required and consist of numbers [0-9]')" 
+                       oninput="setCustomValidity('')" />
                 <input type="submit" value="Retrieve" class="btn btn-default" />
-
             </div>
+            @if (actionId=="6")
+            {
+                <div>
+                    <p class="my-text-warning"> @message</p>
+                </div>
+            }
+
         </form>
         <hr />
 
