@@ -30,7 +30,9 @@
 
 
 /* My styles */
-
+.my-text-warning{
+    color:red;
+}
 footer {
     /*color: white;*/
 }

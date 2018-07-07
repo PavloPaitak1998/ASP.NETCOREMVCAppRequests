@@ -7,6 +7,12 @@
 
 <div class="data">
     <div class="container data">
+        @if (Model.Count() < 1)
+        {
+        <h3 class="my-text-warning">This user doesn't have any posts !</h3> 
+        }
+        else
+        {
         <table class="table table-bordered text-center">
             <thead class="thead-dark">
                 <tr>
@@ -32,5 +38,6 @@
                 </tr>
              }
         </table>
+        }
     </div>
 </div>

@@ -4,30 +4,39 @@
     ViewData["Title"] = "GetUserTodos";
 }
 
-<h2>
-    List (id, name) from list todos which is complete for user
-</h2>
 
 <div class="data">
+    <h2>
+        List (id, name) from list todos which is complete for user
+    </h2>
+
+
     <div class="container data">
-        <table class="table table-bordered text-center">
-            <thead class="thead-dark">
-                <tr>
-                    <th class="">Todo ID</th>
-                    <th class="">Name</th>
-                </tr>
-            </thead>
-            @foreach (var t in Model)
-            {
-                <tr>
-                    <td>@t.id </td>
-                    <td>
-                        <a asp-controller="DataRequest" asp-action="TodoInfo" asp-route-id="@t.id">
-                            @t.name
-                        </a>
-                    </td>
-                </tr>
-            }
-        </table>
+        @if (Model.Count() < 1)
+        {
+            <h3 class="my-text-warning">This user doesn't have todos which is complete !</h3>
+        }
+        else
+        {
+            <table class="table table-bordered text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="">Todo ID</th>
+                        <th class="">Name</th>
+                    </tr>
+                </thead>
+                @foreach (var t in Model)
+                {
+                    <tr>
+                        <td>@t.id </td>
+                        <td>
+                            <a asp-controller="DataRequest" asp-action="TodoInfo" asp-route-id="@t.id">
+                                @t.name
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
     </div>
 </div>
