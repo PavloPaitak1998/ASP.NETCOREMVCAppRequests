@@ -16,7 +16,7 @@
         <table class="table table-bordered text-center">
             <thead class="thead-dark">
                 <tr>
-                    <th class="">User</th>
+                    <th class="">Post</th>
                     <th class="">ID</th>
                     <th class="">Title </th>
                     <th class="">Body </th>
@@ -27,7 +27,7 @@
                 </tr>
             </thead>
             <tr>
-                <td>&nbsp;</td>
+                <td><i class="fas fa-paste"></i></td>
                 <td>@CopyModel.Post.Id </td>
                 <td>
                     <a asp-controller="DataRequest" asp-action="PostInfo" asp-route-id="@CopyModel.Post.Id">
@@ -37,7 +37,7 @@
                 <td>@CopyModel.Post.Body </td>
                 <td>@CopyModel.Post.UserId </td>
                 <td>@CopyModel.Post.Likes</td>
-                <td>@CopyModel.Post.CreatedAt</td>
+                <td>@DateTime.Parse(CopyModel.Post.CreatedAt).ToUniversalTime()</td>
                 <td>
                     <a data-toggle="collapse" href="#collapse1">
                         Comments
@@ -45,6 +45,8 @@
                 </td>
             </tr>
         </table>
+
+@* Collapse Comments*@
 
         @if (CopyModel.Post.Comments.Count() < 1)
         {
@@ -57,7 +59,7 @@
             <div id="collapse1" class="collapse panel-collapse">
 
                 <table class="table table-bordered text-center">
-                    <thead class="thead-dark">
+                    <thead class="thead-light">
                         <tr>
                             <th>Comments </th>
                             <th>Id </th>
@@ -77,7 +79,7 @@
                             <td>@c.UserId</td>
                             <td>@c.PostId</td>
                             <td>@c.Likes</td>
-                            <td>@c.CreatedAt</td>
+                            <td>@DateTime.Parse(c.CreatedAt).ToUniversalTime()</td>
                         </tr>
                     }
                 </table>
@@ -85,6 +87,7 @@
             </div>
         }
 
+@* Table with addition information about post*@
 
         <table class="table table-bordered text-center">
             <thead class="thead-dark">
@@ -132,9 +135,12 @@
             </tr>
         </table>
 
-        <div id="collapse2" class="collapse panel-collapse">
+@* Collapse information about the Longest comment*@
+        @if (CopyModel.LongestComment!=null)
+        {
+            <div id="collapse2" class="collapse panel-collapse">
             <table class="table table-bordered text-center">
-                <thead class="thead-dark">
+                <thead class="thead-light">
                     <tr>
                         <th>Longest </th>
                         <th>Id </th>
@@ -152,14 +158,20 @@
                     <td>@CopyModel.LongestComment.UserId</td>
                     <td>@CopyModel.LongestComment.PostId</td>
                     <td>@CopyModel.LongestComment.Likes</td>
-                    <td>@CopyModel.LongestComment.CreatedAt</td>
+                    <td>@DateTime.Parse(CopyModel.LongestComment.CreatedAt).ToUniversalTime()</td>
                 </tr>
             </table>
         </div>
 
-        <div id="collapse3" class="collapse panel-collapse">
+        }
+
+@* Collapse information about the Likest comment*@
+
+        @if (CopyModel.LikestComment!=null)
+        {
+                    <div id="collapse3" class="collapse panel-collapse">
             <table class="table table-bordered text-center">
-                <thead class="thead-dark">
+                <thead class="thead-light">
                     <tr>
                         <th>Likest </th>
                         <th>Id </th>
@@ -177,10 +189,12 @@
                     <td>@CopyModel.LikestComment.UserId</td>
                     <td>@CopyModel.LikestComment.PostId</td>
                     <td>@CopyModel.LikestComment.Likes</td>
-                    <td>@CopyModel.LikestComment.CreatedAt</td>
+                    <td>@DateTime.Parse(CopyModel.LikestComment.CreatedAt).ToUniversalTime()</td>
                 </tr>
             </table>
         </div>
+
+        }
 
     </div>
 </div>

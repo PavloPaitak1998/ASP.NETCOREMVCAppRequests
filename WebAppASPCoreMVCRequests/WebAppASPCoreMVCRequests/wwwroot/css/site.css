@@ -40,9 +40,9 @@ footer {
     /*color: white;*/
 }
 /* aditional-post-info */
-.aditional-post-info .far{
-    color:black;
-    font-size:15px;
+.aditional-post-info .far, .aditional-post-info .fas{
+    color: #008aff;
+    font-size: 15px;
 }
 /* Requests */
 .requests p {
@@ -146,6 +146,13 @@ footer {
 
 .data {
     padding-top: 20px;
+}
+
+.thead-light th {
+    color: #495057;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+    text-align: center;
 }
 
 .thead-dark th {
