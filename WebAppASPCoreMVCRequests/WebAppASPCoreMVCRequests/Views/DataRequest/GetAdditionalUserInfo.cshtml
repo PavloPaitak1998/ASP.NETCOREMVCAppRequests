@@ -6,23 +6,26 @@
     (User User, Post LastPost, int CountComments, int UncompletedTasks, Post MostPopularPostByComments, Post MostPopularPostByLikes) CopyModel = Model;
 }
 
-<h2>Additional User Information</h2>
+<div class="data additional-user-info">
 
-<div class="data">
+    <h2>Additional User Information</h2>
+
     <div class="container data">
         <table class="table table-bordered text-center">
             <thead class="thead-dark">
                 <tr>
-                    <th class="">User ID</th>
-                    <th class="">Name</th>
-                    <th class="">Avatar</th>
-                    <th class="">Email</th>
-                    <th class="">Created At</th>
-                    <th class="">Posts</th>
-                    <th class="">Todos</th>
+                    <th>User </th>
+                    <th>ID </th>
+                    <th>Name </th>
+                    <th>Avatar </th>
+                    <th>Email </th>
+                    <th>Created At </th>
+                    <th>Posts </th>
+                    <th>Todos </th>
                 </tr>
             </thead>
             <tr>
+                <td><i class="far fa-user"></i></td>
                 <td>@CopyModel.User.Id</td>
                 <td>
                     <a asp-controller="DataRequest" asp-action="UserInfo" asp-route-id="@CopyModel.User.Id">
@@ -31,32 +34,145 @@
                 </td>
                 <td>@CopyModel.User.Avatar</td>
                 <td>@CopyModel.User.Email </td>
-                <td>@CopyModel.User.CreatedAt</td>
-                <td>Post</td>
-                <td>Todo</td>
+                <td>@DateTime.Parse(CopyModel.User.CreatedAt).ToUniversalTime()</td>
+                <td>
+                    @if (CopyModel.User.Posts.Count() < 1)
+                    {
+                        @: Absent
+                    }
+                    else
+                    {
+                        <a data-toggle="collapse" href="#collapse1">
+                            Post
+                        </a>
+
+                    }
+                </td>
+                <td>
+                    @if (CopyModel.User.Todos.Count() < 1)
+                    {
+                        @: Absent
+                    }
+                    else
+                    {
+                        <a data-toggle="collapse" href="#collapse2">
+                            Todo
+                        </a>
+
+                    }
+                </td>
             </tr>
         </table>
+
+
+        @* Collapse for posts information *@
+
+        @if (CopyModel.User.Posts.Count() > 0)
+        {
+            <div id="collapse1" class="collapse panel-collapse">
+
+                <table class="table table-bordered text-center">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Posts</th>
+                            <th>ID</th>
+                            <th>Title </th>
+                            <th>Body </th>
+                            <th>UserId </th>
+                            <th>Likes </th>
+                            <th>CreatedAt </th>
+                            <th>Comments </th>
+                        </tr>
+                    </thead>
+                    @foreach (var p in CopyModel.User.Posts)
+                    {
+                        <tr>
+                            <td><i class="fas fa-paste"></i></td>
+                            <td>@p.Id </td>
+                            <td>
+                                <a asp-controller="DataRequest" asp-action="PostInfo" asp-route-id="@p.Id">
+                                    @p.Title
+                                </a>
+                            </td>
+                            <td>@p.Body </td>
+                            <td>@p.UserId </td>
+                            <td>@p.Likes</td>
+                            <td>@DateTime.Parse(p.CreatedAt).ToUniversalTime()</td>
+                            <td>@p.Comments.Count()</td>
+                        </tr>
+                    }
+                </table>
+
+            </div>
+        }
+
+
+        @* Collapse for todos information *@
+
+        @if (CopyModel.User.Todos.Count() > 0)
+        {
+            <div id="collapse2" class="collapse panel-collapse">
+
+                <table class="table table-bordered text-center">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Todos </th>
+                            <th>ID </th>
+                            <th>Name </th>
+                            <th>IsComplete </th>
+                            <th>UserId </th>
+                            <th>CreatedAt </th>
+                        </tr>
+                    </thead>
+                    @foreach (var t in CopyModel.User.Todos)
+                    {
+                        <tr>
+                            <td><i class="far fa-list-alt"></i></td>
+                            <td>@t.Id </td>
+                            <td>
+                                <a asp-controller="DataRequest" asp-action="TodoInfo" asp-route-id="@t.Id">
+                                    @t.Name
+                                </a>
+                            </td>
+                            <td>@t.IsComplete </td>
+                            <td>@t.UserId </td>
+                            <td>@DateTime.Parse(t.CreatedAt).ToUniversalTime()</td>
+                        </tr>
+                    }
+                </table>
+
+            </div>
+        }
+
+
+        @* Table with addition information about user*@
 
         <table class="table table-bordered text-center">
             <thead class="thead-dark">
                 <tr>
-                    <th class="">LastPost</th>
+                    <th class="">LastPost-Id</th>
                     <th class="">CountComments</th>
                     <th class="">UncompletedTasks</th>
-                    <th class="">MostPopularPostByComments</th>
-                    <th class="">MostPopularPostByLikes</th>
+                    <th class="">MostPopularPost-IdByComments </th>
+                    <th class="">MostPopularPost-IdByLikes </th>
                 </tr>
             </thead>
             <tr>
                 <td>
-                @if (CopyModel.LastPost != null)
-                {
-                    @CopyModel.LastPost.Id
-                }
-                else
-                {
-                    @: Absent
-                }
+                    @if (CopyModel.LastPost != null)
+                    {
+                        @CopyModel.LastPost.Id
+
+                        <span class="comment-info">
+                            <a data-toggle="collapse" href="#collapse3">
+                                info
+                            </a>
+                        </span>
+                    }
+                    else
+                    {
+                        @: Absent
+                    }
                 </td>
                 <td>@CopyModel.CountComments </td>
                 <td>@CopyModel.UncompletedTasks </td>
@@ -64,6 +180,13 @@
                     @if (CopyModel.MostPopularPostByComments != null)
                     {
                         @CopyModel.MostPopularPostByComments.Id
+
+                        <span class="comment-info">
+                            <a data-toggle="collapse" href="#collapse4">
+                                info
+                            </a>
+                        </span>
+
                     }
                     else
                     {
@@ -75,6 +198,12 @@
                     @if (CopyModel.MostPopularPostByLikes != null)
                     {
                         @CopyModel.MostPopularPostByLikes.Id
+
+                        <span class="comment-info">
+                            <a data-toggle="collapse" href="#collapse5">
+                                info
+                            </a>
+                        </span>
                     }
                     else
                     {
@@ -83,6 +212,121 @@
                 </td>
             </tr>
         </table>
+
+        @* Collapse for Last post information *@
+
+        @if (CopyModel.LastPost != null)
+        {
+            <div id="collapse3" class="collapse panel-collapse">
+
+                <table class="table table-bordered text-center">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>LastPost</th>
+                            <th>ID</th>
+                            <th>Title </th>
+                            <th>Body </th>
+                            <th>UserId </th>
+                            <th>Likes </th>
+                            <th>CreatedAt </th>
+                            <th>Comments </th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td><i class="fas fa-paste"></i></td>
+                        <td>@CopyModel.LastPost.Id </td>
+                        <td>
+                            <a asp-controller="DataRequest" asp-action="PostInfo" asp-route-id="@CopyModel.LastPost.Id">
+                                @CopyModel.LastPost.Title
+                            </a>
+                        </td>
+                        <td>@CopyModel.LastPost.Body </td>
+                        <td>@CopyModel.LastPost.UserId </td>
+                        <td>@CopyModel.LastPost.Likes</td>
+                        <td>@DateTime.Parse(CopyModel.LastPost.CreatedAt).ToUniversalTime()</td>
+                        <td>@CopyModel.LastPost.Comments.Count()</td>
+                    </tr>
+                </table>
+
+            </div>
+        }
+
+        @* Collapse for Most Popular Post By Comments information *@
+
+        @if (CopyModel.MostPopularPostByComments != null)
+        {
+            <div id="collapse4" class="collapse panel-collapse">
+
+                <table class="table table-bordered text-center">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>MostPopularPostByComments</th>
+                            <th>ID</th>
+                            <th>Title </th>
+                            <th>Body </th>
+                            <th>UserId </th>
+                            <th>Likes </th>
+                            <th>CreatedAt </th>
+                            <th>Comments </th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td><i class="fas fa-paste"></i></td>
+                        <td>@CopyModel.MostPopularPostByComments.Id </td>
+                        <td>
+                            <a asp-controller="DataRequest" asp-action="PostInfo" asp-route-id="@CopyModel.MostPopularPostByComments.Id">
+                                @CopyModel.MostPopularPostByComments.Title
+                            </a>
+                        </td>
+                        <td>@CopyModel.MostPopularPostByComments.Body </td>
+                        <td>@CopyModel.MostPopularPostByComments.UserId </td>
+                        <td>@CopyModel.MostPopularPostByComments.Likes</td>
+                        <td>@DateTime.Parse(CopyModel.MostPopularPostByComments.CreatedAt).ToUniversalTime()</td>
+                        <td>@CopyModel.MostPopularPostByComments.Comments.Count()</td>
+                    </tr>
+                </table>
+
+            </div>
+        }
+
+        @* Collapse for Most Popular Post By Comments information *@
+
+        @if (CopyModel.MostPopularPostByLikes != null)
+        {
+            <div id="collapse5" class="collapse panel-collapse">
+
+                <table class="table table-bordered text-center">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>MostPopularPostByLikes</th>
+                            <th>ID</th>
+                            <th>Title </th>
+                            <th>Body </th>
+                            <th>UserId </th>
+                            <th>Likes </th>
+                            <th>CreatedAt </th>
+                            <th>Comments </th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td><i class="fas fa-paste"></i></td>
+                        <td>@CopyModel.MostPopularPostByLikes.Id </td>
+                        <td>
+                            <a asp-controller="DataRequest" asp-action="PostInfo" asp-route-id="@CopyModel.MostPopularPostByLikes.Id">
+                                @CopyModel.MostPopularPostByLikes.Title
+                            </a>
+                        </td>
+                        <td>@CopyModel.MostPopularPostByLikes.Body </td>
+                        <td>@CopyModel.MostPopularPostByLikes.UserId </td>
+                        <td>@CopyModel.MostPopularPostByLikes.Likes</td>
+                        <td>@DateTime.Parse(CopyModel.MostPopularPostByLikes.CreatedAt).ToUniversalTime()</td>
+                        <td>@CopyModel.MostPopularPostByLikes.Comments.Count()</td>
+                    </tr>
+                </table>
+
+            </div>
+        }
+
 
     </div>
 </div>

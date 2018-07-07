@@ -5,25 +5,22 @@
     (Post Post, Comment LongestComment, Comment LikestComment, int CountComments) CopyModel = Model;
 }
 
-
-
 <div class="data aditional-post-info">
 
     <h2>Additional Post Information</h2>
 
     <div class="container data">
-
         <table class="table table-bordered text-center">
             <thead class="thead-dark">
                 <tr>
-                    <th class="">Post</th>
-                    <th class="">ID</th>
-                    <th class="">Title </th>
-                    <th class="">Body </th>
-                    <th class="">UserId </th>
-                    <th class="">Likes </th>
-                    <th class="">CreatedAt </th>
-                    <th class="">Comments </th>
+                    <th>Post</th>
+                    <th>ID</th>
+                    <th>Title </th>
+                    <th>Body </th>
+                    <th>UserId </th>
+                    <th>Likes </th>
+                    <th>CreatedAt </th>
+                    <th>Comments </th>
                 </tr>
             </thead>
             <tr>
@@ -39,22 +36,23 @@
                 <td>@CopyModel.Post.Likes</td>
                 <td>@DateTime.Parse(CopyModel.Post.CreatedAt).ToUniversalTime()</td>
                 <td>
-                    <a data-toggle="collapse" href="#collapse1">
-                        Comments
-                    </a>
+                    @if (CopyModel.Post.Comments.Count() <1)
+                    {
+                        @:Absent
+                    }
+                    else
+                    {
+                        <a data-toggle="collapse" href="#collapse1">
+                            Comments
+                        </a>
+                    }
                 </td>
             </tr>
         </table>
 
 @* Collapse Comments*@
 
-        @if (CopyModel.Post.Comments.Count() < 1)
-        {
-            <div id="collapse1" class="panel-collapse collapse ">
-                <h3 class="my-text-warning panel-body">No Comments</h3>
-            </div>
-        }
-        else
+        @if (CopyModel.Post.Comments.Count()>0)
         {
             <div id="collapse1" class="collapse panel-collapse">
 
@@ -85,6 +83,7 @@
                 </table>
 
             </div>
+
         }
 
 @* Table with addition information about post*@

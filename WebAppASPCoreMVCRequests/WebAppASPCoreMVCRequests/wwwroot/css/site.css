@@ -33,18 +33,27 @@ a {
 
 
 /* My styles */
-.my-text-warning{
-    color:red;
+.comment-info{
+    font-family: sans-serif;
+}
+
+.my-text-warning {
+    color: red;
 }
 footer {
     /*color: white;*/
 }
 /* aditional-post-info */
-.aditional-post-info .far, .aditional-post-info .fas{
-    color: #008aff;
+
+.aditional-post-info .far, .aditional-post-info .fas,
+.additional-user-info .far, .additional-user-info .fas,
+.comments-count far, .user-comments .far,
+.user-todos .far {
+    color: #495057;
     font-size: 15px;
 }
 /* Requests */
+
 .requests p {
     font-size: 20px;
 }

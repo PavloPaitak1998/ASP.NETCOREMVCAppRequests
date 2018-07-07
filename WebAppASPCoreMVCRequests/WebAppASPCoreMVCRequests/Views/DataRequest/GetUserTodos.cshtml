@@ -5,7 +5,8 @@
 }
 
 
-<div class="data">
+<div class="data user-todos">
+
     <h2>
         List (id, name) from list todos which is complete for user
     </h2>
@@ -21,20 +22,22 @@
             <table class="table table-bordered text-center">
                 <thead class="thead-dark">
                     <tr>
-                        <th class="">Todo ID</th>
-                        <th class="">Name</th>
+                        <th>Todo </th>
+                        <th class="">ID </th>
+                        <th class="">Name </th>
                     </tr>
                 </thead>
                 @foreach (var t in Model)
                 {
-                    <tr>
-                        <td>@t.id </td>
-                        <td>
-                            <a asp-controller="DataRequest" asp-action="TodoInfo" asp-route-id="@t.id">
-                                @t.name
-                            </a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td><i class="far fa-list-alt"></i></td>
+                    <td>@t.id </td>
+                    <td>
+                        <a asp-controller="DataRequest" asp-action="TodoInfo" asp-route-id="@t.id">
+                            @t.name
+                        </a>
+                    </td>
+                </tr>
                 }
             </table>
         }
