@@ -1,0 +1,29 @@
+﻿@model Todo
+
+@{
+    ViewData["Title"] = "TodoInfo";
+}
+
+<h2>TodoInfo</h2>
+
+<div class="container data">
+    <table class="table table-bordered text-center">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>IsComplete </th>
+                <th>UserId </th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+
+            <tr>
+                <td>@Model.Id </td>
+                <td>@Model.Name </td>
+                <td>@Model.IsComplete </td>
+                <td>@Model.UserId </td>
+                <td>@DateTime.Parse(Model.CreatedAt).ToUniversalTime() </td>
+            </tr>
+    </table>
+</div>

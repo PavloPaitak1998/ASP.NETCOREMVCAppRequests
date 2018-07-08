@@ -1,0 +1,64 @@
+﻿@model ValueTuple<Post, User>
+
+@{
+    ViewData["Title"] = "PostInfo";
+
+    (Post Post, User User) CopyModel = Model;
+}
+
+<div class="container data posts ">
+    <h2>Post Information</h2>
+    <br />
+        <div class="post">
+            <div class="head_post">
+                <div class="avatar">
+                    <a asp-controller="DataRequest" asp-action="UserInfo" asp-route-id="@CopyModel.User.Id">
+                        <img class="avatar" src="@CopyModel.User.Avatar" alt="Alternate Text" />
+                    </a>
+                </div>
+                <div class="my_title">
+                    @CopyModel.Post.Title <br />
+                    <a asp-controller="DataRequest" asp-action="UserInfo" asp-route-id="@CopyModel.User.Id">
+                        @CopyModel.User.Name
+                    </a>
+                </div>
+            </div>
+            <div class="body_post">
+                @CopyModel.Post.Body
+            </div>
+            <div class="footer_post" id="accordion">
+
+                <div>
+                    <a data-toggle="collapse" data-parent="#accordion" href="@String.Concat("#collapse", CopyModel.Post.Id.ToString())">
+                        <i class="far fa-comment-dots"></i>
+                    </a>
+                </div>
+
+                <div>
+                    <i class="far fa-heart"></i> @CopyModel.Post.Likes
+
+                </div>
+
+                <div>
+                    <i class="far fa-calendar-alt"></i> @DateTime.Parse(CopyModel.Post.CreatedAt).ToShortDateString()
+
+                </div>
+            </div>
+        </div>
+        <div id="@String.Concat("collapse", CopyModel.Post.Id.ToString())"
+             class="comments panel-collapse collapse ">
+
+            @foreach (var c in CopyModel.Post.Comments)
+            {
+                <div class="panel-body comment">
+                    &nbsp; @c.Body  &nbsp;
+                    <span class="comment_data">
+                        <i class="far fa-user"></i> Id @c.UserId
+                        <i class="far fa-heart"></i> @c.Likes
+                        <i class="far fa-calendar-alt"></i> @DateTime.Parse(c.CreatedAt).ToShortDateString()
+                    </span>
+                </div>
+            }
+        </div>
+
+</div>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebAppASPCoreMVCRequests.Models.Comment >
+
+@{
+    ViewData["Title"] = "GetUserComments";
+}
+
+<div class="data user-comments">
+
+    <h2>Comments under user's posts where comment body < 50</h2>
+
+    <div class="container data">
+        @if (Model.Count() < 1)
+        {
+            <h3 class="my-text-warning">This user doesn't have comments under posts where comment body < 50 </h3>
+        }
+        else
+        {
+            <table class="table table-bordered text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Comment </th>
+                        <th>ID</th>
+                        <th>Body  </th>
+                        <th>UserId  </th>
+                        <th>PostId  </th>
+                        <th>Likes  At</th>
+                        <th>CreatedAt </th>
+                    </tr>
+                </thead>
+                @foreach (var c in Model)
+                {
+                    <tr>
+                        <td><i class="far fa-comment-dots"></i></td>
+                        <td>@c.Id</td>
+                        <td>@c.Body</td>
+                        <td>@c.UserId</td>
+                        <td>@c.PostId </td>
+                        <td>@c.Likes</td>
+                        <td>@DateTime.Parse(c.CreatedAt).ToUniversalTime()</td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+</div>

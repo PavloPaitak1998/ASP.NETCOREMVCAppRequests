@@ -1,0 +1,141 @@
+﻿@model ValueTuple<string,string>
+
+@{
+    ViewData["Title"] = "Info";
+
+    var actionId = Model.Item1;
+    var message = Model.Item2;
+}
+
+
+<div class="requests data">
+    <h2>Here is requests. Hit a button to retrieve a spacific data.</h2>
+
+    <div class="wrap">
+        <form asp-action="GetCommentsCount" asp-controller="DataRequest" asp-antiforgery="true">
+            <p>
+                Get count of user comments
+            </p>
+            <div>
+                <label>UserId</label> <br />
+                <input type="text" name="id" pattern="^[ 0-9]+$"  required  
+                       oninvalid="setCustomValidity('Id is required and consist of numbers [0-9]')"
+                       oninput="setCustomValidity('')"/>
+                <input type="submit" value="Retrieve" class="btn btn-default" />
+            </div>
+            @if (actionId=="1")
+            {
+                <div>
+                    <p class="my-text-warning"> @message</p>
+                </div>
+            }
+        </form>
+        <hr />
+
+        <form asp-action="GetUserComments" asp-controller="DataRequest" asp-antiforgery="true">
+            <p>
+                Get comments under user's posts where comment body < 50
+            </p>
+            <div>
+                <label>UserId</label> <br />
+                <input type="text" name="id" pattern="^[ 0-9]+$" required 
+                       oninvalid="setCustomValidity('Id is required and consist of numbers [0-9]')" 
+                       oninput="setCustomValidity('')"/>
+                <input type="submit" value="Retrieve" class="btn btn-default" />
+            </div>
+            @if (actionId=="2")
+            {
+                <div>
+                    <p class="my-text-warning"> @message</p>
+                </div>
+            }
+
+        </form>
+        <hr />
+
+        <form asp-action="GetUserTodos" asp-controller="DataRequest" asp-antiforgery="true">
+            <p>
+                Get list (id, name) from list todos which is complete for user.
+            </p>
+            <div>
+                <label>UserId</label> <br />
+                <input type="text" name="id" pattern="^[ 0-9]+$" required 
+                       oninvalid="setCustomValidity('Id is required and consist of numbers [0-9]')" 
+                       oninput="setCustomValidity('')"/>
+                <input type="submit" value="Retrieve" class="btn btn-default" />
+            </div>
+            @if (actionId=="3")
+            {
+                <div>
+                    <p class="my-text-warning"> @message</p>
+                </div>
+            }
+
+        </form>
+        <hr />
+
+        <form asp-action="GetAdditionalUserInfo" asp-controller="DataRequest" asp-antiforgery="true">
+            <p>
+                Get the following structure: <br />
+                <div class="stracture">
+                    User<br />
+                    Last post by user(by date)<br />
+                    Number of comments under the last post<br />
+                    Number of unloaded todo for the user<br />
+                    The most popular user post(where there are most comments with a<br />
+                    text length of more than 80 characters)<br />
+                    The most popular user post(where most of all are keynotes<br />
+                </div>
+            </p>
+            <div>
+                <label>UserId</label> <br />
+                <input type="text" name="id" pattern="^[ 0-9]+$" required 
+                       oninvalid="setCustomValidity('Id is required and consist of numbers [0-9]')" 
+                       oninput="setCustomValidity('')"/>
+                <input type="submit" value="Retrieve" class="btn btn-default" />
+            </div>
+            @if (actionId=="5")
+            {
+                <div>
+                    <p class="my-text-warning"> @message</p>
+                </div>
+            }
+
+        </form>
+        <hr />
+
+        <form asp-action="GetAdditionalPostInfo" asp-controller="DataRequest" asp-antiforgery="true">
+            <p>
+                Get the following structure: <br />
+                <div class="stracture">
+                    Post<br />
+                    The longest post comment<br />
+                    The likest post comment<br />
+                    The number of comments under the post where or 0 words or the<br />
+                    length of the text is < 80
+                </div>
+            </p>
+            <div>
+                <label >PostId</label> <br />
+                <input type="text" name="id" pattern="^[ 0-9]+$" required 
+                       oninvalid="setCustomValidity('Id is required and consist of numbers [0-9]')" 
+                       oninput="setCustomValidity('')" />
+                <input type="submit" value="Retrieve" class="btn btn-default" />
+            </div>
+            @if (actionId=="6")
+            {
+                <div>
+                    <p class="my-text-warning"> @message</p>
+                </div>
+            }
+
+        </form>
+        <hr />
+
+        <p>
+            Get list of users alphabetically (ascending) with sorted todo items by length name (descending)
+        </p>
+        <a asp-controller="DataRequest" asp-action="GetSortedUsers" class="btn btn-default">Retrieve</a>
+
+    </div>
+</div>

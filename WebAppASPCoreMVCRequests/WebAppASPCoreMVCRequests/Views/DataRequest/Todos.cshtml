@@ -1,0 +1,56 @@
+﻿@model List<User>
+
+@{
+    ViewData["Title"] = "Todos";
+}
+
+<div class="container data todos ">
+    <h2>Todos</h2>
+
+    @foreach (var u in Model)
+    {
+        <div class="todo">
+            <div class="head_todo">
+                <div class="avatar">
+                    <a asp-controller="DataRequest" asp-action="UserInfo" asp-route-id="@u.Id"> 
+                        <img class="avatar" src="@u.Avatar" alt="Alternate Text" />
+                    </a>
+                </div>
+                <div class="my_title">
+                    <a asp-controller="DataRequest" asp-action="UserInfo" asp-route-id="@u.Id">
+                        @u.Name
+                    </a>
+                     <br />
+                </div>
+            </div>
+            <div class="body_todo">
+                @foreach (var t in u.Todos)
+                {
+                <p class="todo_entity">
+                    <i class="far fa-list-alt"></i> @t.Name &nbsp;
+                    Comlete: @if (t.IsComplete){<i class="fas fa-check"></i> }
+                    else {<i class="fas fa-times"></i> }
+
+                    &nbsp;
+                    <i class="far fa-calendar-alt"></i> @DateTime.Parse(t.CreatedAt).ToShortDateString()
+                </p>  
+                }
+            </div>
+            <div class="footer_post">
+                <div>
+                    <i class="far fa-user"></i> Id @u.Id
+                </div>
+
+                <div>
+                    <i class="far fa-envelope"></i> @u.Email
+                </div>
+
+                <div>
+                    <i class="far fa-calendar-alt"></i> @DateTime.Parse(u.CreatedAt).ToShortDateString()
+                </div>
+
+            </div>
+        </div>
+    }
+
+</div>
