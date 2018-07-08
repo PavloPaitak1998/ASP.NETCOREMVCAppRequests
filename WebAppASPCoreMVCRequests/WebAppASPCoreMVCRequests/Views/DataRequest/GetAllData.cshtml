@@ -2,31 +2,123 @@
 @{
     ViewData["Title"] = "GetAllData";
 }
-<div class="container data">
-    <table class="table table-bordered text-center">
-        <thead class="thead-dark">
-            <tr>
-                <th>User ID</th>
-                <th>Name</th>
-                <th>Avatar</th>
-                <th>Email</th>
-                <th>Created At</th>
-                <th>Posts</th>
-                <th>Todos</th>
-            </tr>
-        </thead>
-        @foreach (var u in Model)
-        {
-            <tr>
-                <td>@u.Id </td>
-                <td>@u.Name </td>
-                <td>@u.Avatar </td>
-                <td>@u.Email </td>
-                <td>@DateTime.Parse(u.CreatedAt).ToUniversalTime() </td>
-                <td>Post</td>
-                <td>Todo</td>
-            </tr>
-        }
-    </table>
-</div>
 
+<div class="container data all-data">
+    @foreach (var u in Model)
+    {
+        <div class="container data todos ">
+            <h2>User Information</h2>
+
+            <div class="todo wrap">
+                <div class="head_todo">
+                    <div class="avatar">
+                        <img class="avatar" src="@u.Avatar" alt="Alternate Text" />
+                    </div>
+                    <div class="my_title">
+                        @u.Name
+                        <br />
+                    </div>
+                </div>
+                <div class="body_todo">
+                    @foreach (var t in u.Todos)
+                    {
+                        <p class="todo_entity">
+                            <i class="far fa-list-alt"></i> @t.Name &nbsp;
+                            Comlete: @if (t.IsComplete)
+                            {<i class="fas fa-check"></i> }
+                            else
+                            {<i class="fas fa-times"></i>}
+
+                            &nbsp;
+                            <i class="far fa-calendar-alt"></i> @DateTime.Parse(t.CreatedAt).ToShortDateString()
+                        </p>
+                    }
+                </div>
+                <div class="footer_post">
+                    <div>
+                        <i class="far fa-user"></i> Id @u.Id
+                    </div>
+
+                    <div>
+                        <i class="far fa-envelope"></i> @u.Email
+                    </div>
+
+                    <div>
+                        <i class="far fa-calendar-alt"></i> @DateTime.Parse(u.CreatedAt).ToShortDateString()
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container data posts ">
+            <h2>Posts</h2>
+            @if (u.Posts.Count() > 0)
+            {
+                @foreach (var p in u.Posts)
+                {
+                    <div class="post">
+                        <div class="head_post">
+                            <div class="avatar">
+                                <img class="avatar" src="@u.Avatar" alt="Alternate Text" />
+                            </div>
+                            <div class="my_title">
+                                @p.Title <br />
+                                <span class="name">
+                                    @u.Name
+                                </span>
+                            </div>
+                        </div>
+                        <div class="body_post">
+                            @p.Body
+                        </div>
+                        <div class="footer_post" id="accordion">
+
+                            <div>
+                                <a data-toggle="collapse" data-parent="#accordion" href="@String.Concat("#collapse", p.Id.ToString())">
+                                    <i class="far fa-comment-dots"></i>
+                                </a>
+                            </div>
+
+                            <div>
+                                <i class="far fa-heart"></i> @p.Likes
+
+                            </div>
+
+                            <div>
+                                <i class="far fa-calendar-alt"></i> @DateTime.Parse(p.CreatedAt).ToShortDateString()
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="@String.Concat("collapse", p.Id.ToString())"
+                         class="comments panel-collapse collapse ">
+
+                        @foreach (var c in p.Comments)
+                        {
+                            <div class="panel-body comment">
+                                &nbsp; @c.Body  &nbsp;
+                                <span class="comment_data">
+                                    <i class="far fa-user"></i> Id @c.UserId
+                                    <i class="far fa-heart"></i> @c.Likes
+                                    <i class="far fa-calendar-alt"></i> @DateTime.Parse(c.CreatedAt).ToShortDateString()
+                                </span>
+                            </div>
+                        }
+                    </div>
+                }
+
+            }
+            else
+            {
+                <h3 class="my-text-warning">No Posts</h3>
+
+            }
+
+        </div>
+
+        <hr />
+    }
+
+</div>

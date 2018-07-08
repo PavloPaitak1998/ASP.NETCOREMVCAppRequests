@@ -33,7 +33,13 @@ a {
 
 
 /* My styles */
-.comment-info{
+
+.all-data hr {
+    height: 1px;
+    background: #B4B9C2;
+}
+
+.comment-info {
     font-family: sans-serif;
 }
 
