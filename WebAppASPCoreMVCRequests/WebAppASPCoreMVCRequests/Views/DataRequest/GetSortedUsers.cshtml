@@ -23,16 +23,58 @@
         
         @foreach (var u in Model)
         {
-        <tr>
-            <td><i class="far fa-user"></i></td>
-            <td>@u.Id </td>
-            <td>@u.Name </td>
-            <td>@u.Avatar </td>
-            <td>@u.Email </td>
-            <td>@DateTime.Parse(u.CreatedAt).ToUniversalTime() </td>
-            <td>@u.Posts.Count()</td>
-            <td>Todo</td>
-        </tr>
+            <tr>
+                <td><i class="far fa-user"></i></td>
+                <td>@u.Id </td>
+                <td>
+                    <a asp-controller="DataRequest" asp-action="UserInfo" asp-route-id="@u.Id">
+                        @u.Name
+                    </a>
+
+                    
+                </td>
+                <td><img class="avatar" src="@u.Avatar" alt="@u.Avatar" />  </td>
+                <td>@u.Email </td>
+                <td>@DateTime.Parse(u.CreatedAt).ToUniversalTime() </td>
+                <td>@u.Posts.Count()</td>
+                <td width="230px">
+                        @if (u.Todos.Count() < 1)
+                        {
+                            @: Absent
+                        }
+                        else
+                        {
+                            <a data-toggle="collapse" href="@String.Concat("#collapse", u.Id.ToString())">
+                                Todos
+                            </a>
+
+                        }
+ 
+                </td>
+            </tr>
+
+            @if (u.Todos.Count() > 0)
+            {
+                
+            <tr id="@String.Concat("collapse", u.Id.ToString())" class="collapse panel-collapse">
+                <td colspan="7"></td>
+                <td class="td-light">
+                    <span class="light">Name</span> <br />
+
+                    @foreach (var t in u.Todos)
+                    {
+                        <i class="far fa-list-alt"></i> 
+                        <a asp-controller="DataRequest" asp-action="TodoInfo" asp-route-id="@t.Id">
+                                    @t.Name
+                        </a> @if (t.IsComplete){<i class="fas fa-check"></i> }
+                    else {<i class="fas fa-times"></i> } <br />
+
+
+                    }
+                </td>
+            </tr>
+
+            }
         }
     </table>
 </div>
